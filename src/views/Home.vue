@@ -87,53 +87,58 @@
             </el-submenu>
     </el-menu>
         </el-aside>
-        <el-main class="main">Main</el-main>
+        <el-main class="main">
+          <!-- user组件 -->
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
 </template>
 
 <script>
 export default {
-  beforeCreate () {
-    const token = sessionStorage.getItem('token')
+  beforeCreate() {
+    const token = sessionStorage.getItem("token");
     if (!token) {
       //如果用户没有登录，则退回登录页
-      this.$router.push('/login')
-      this.$message.warning('请先登录')
+      this.$router.push("/login");
+      this.$message.warning("请先登录");
     }
   },
   methods: {
-    handelSignout () {
+    handelSignout() {
       //点击退出按钮，删除session
-      sessionStorage.clear()
+      sessionStorage.clear();
       //跳转到登录页面
-      this.$router.push('/login')
-      this.$message.success('退出成功')
+      this.$router.push("/login");
+      this.$message.success("退出成功");
     }
   }
-}
+};
 </script>
 <style>
-  .container {
-    height: 100%;
-  }
-  .header {
-    background-color: #b3c0d1;
-  }
-  .aside {
-    background-color: #d3dce6;
-  }
-  .main {
-    background-color: #e9eef3;
-    height: 100%;
-  }
-  .header .middle {
-    line-height: 60px;
-    color: #fff;
-    text-align: center;
-  }
-  .header .loginout {
-    line-height: 60px;
-    text-decoration: none;
-  }
+.menu {
+  height: 100%;
+}
+.container {
+  height: 100%;
+}
+.header {
+  background-color: #b3c0d1;
+}
+.aside {
+  background-color: #d3dce6;
+}
+.main {
+  background-color: #e9eef3;
+}
+.header .middle {
+  line-height: 60px;
+  color: #fff;
+  text-align: center;
+}
+.header .loginout {
+  line-height: 60px;
+  text-decoration: none;
+}
 </style>

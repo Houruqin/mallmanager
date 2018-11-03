@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // 自行配置路由
 import login from '../views/login.vue'
 import Home from '../views/Home.vue'
+import User from '../views/user/user.vue'
 // 在vue中使用插件
 Vue.use(Router)
 export default new Router({
@@ -18,7 +19,14 @@ export default new Router({
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/user',
+          component: User
+        }
+      ]
+    
     }
   ]
 })
